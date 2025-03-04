@@ -11,5 +11,15 @@ def chat():
         respuesta = sistema.levantar_requisitos(user_input)
         print(respuesta)
 
+        # Solicitar feedback del usuario
+        feedback = input("¿Fue útil la respuesta? (sí/no): ").strip().lower()
+        if feedback in ["sí", "si", "s", "yes", "y"]:
+            print("¡Gracias por tu feedback positivo!")
+        else:
+            print("Lamentamos que no fuera útil. ¿Cómo podríamos mejorar?")
+            sugerencia = input("Sugerencia: ")
+            sistema._guardar_interaccion(user_input, respuesta, "", "", sugerencia)
+
 # Iniciar el chat
-chat()
+if __name__ == "__main__":
+    chat()
